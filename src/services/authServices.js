@@ -12,7 +12,7 @@ export const validateEmail = (email) => {
 export const registerUser = async(userData) => {
   try{
     const response  = await axios.post(
-     ` ${BACKEND_URL}/api/user/register`,
+     `/api/user/register`,
       userData,
       {withCredentials  : true}
     );
@@ -29,7 +29,7 @@ export const registerUser = async(userData) => {
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(
-      `${BACKEND_URL}/api/user/login`,
+      `/api/user/login`,
       userData
     );
     if (response.statusText === "OK") {
@@ -47,7 +47,7 @@ export const loginUser = async (userData) => {
 
 export const logoutUser = async () => {
   try {
-    await axios.get(`${BACKEND_URL}/api/user/logout`);
+    await axios.get(`/api/user/logout`);
   } catch (error) {
     const message =
       (error.responseponse && error.responseponse.data && error.responseponse.data.message) ||
@@ -58,7 +58,7 @@ export const logoutUser = async () => {
 }
 export const getUser = async () => {
   try {
-    const response = await axios.get(`${BACKEND_URL}/api/user/getuser`);
+    const response = await axios.get(`/api/user/getuser`);
     return response.data;
   } catch (error) {
     const message =
@@ -71,7 +71,7 @@ export const getUser = async () => {
 
 export const  getLoginStatus = async() => {
   try{
-    const responseponse = await axios.get(`${BACKEND_URL}/api/user/loggedin`)
+    const responseponse = await axios.get(`/api/user/loggedin`)
     return responseponse.data;
   }catch(error){
    const message =  (error.responseponse && error.responseponse.data && error.responseponse.data.message) ||
@@ -84,7 +84,7 @@ export const  getLoginStatus = async() => {
 export const forgotPassword = async(userData)=>{
   try{
      const response = await axios.post(
-      `${BACKEND_URL}/api/user/forgotpassword`,
+      `/api/user/forgotpassword`,
       userData
      );
      toast.success(response.data.message)
@@ -99,7 +99,7 @@ export const forgotPassword = async(userData)=>{
 export const resetPassword = async(userData, resetToken) => {
   try{
     const response = await axios.put(
-      `${BACKEND_URL}/api/user/resetpassword/${resetToken}`,
+      `/api/user/resetpassword/${resetToken}`,
       userData
     )
     return response.data
@@ -114,7 +114,7 @@ export const resetPassword = async(userData, resetToken) => {
 export const updateUser = async (formData) => {
   try {
     const response = await axios.patch(
-      `${BACKEND_URL}/api/user/updateuser`,
+      `/api/user/updateuser`,
       formData
     );
     return response.data;
@@ -129,7 +129,7 @@ export const updateUser = async (formData) => {
 export const changePassword = async (formData) => {
   try {
     const response = await axios.patch(
-      `${BACKEND_URL}/api/user/changepassword`,
+      `/api/user/changepassword`,
       formData
     );
     return response.data;
